@@ -11,9 +11,7 @@ export const ProductProvider = ({ children }) => {
       return [];
     }
   });
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(products));
-  }, [products]);
+
   useEffect(() => {
     const limitedProducts = products.slice(-20);
     localStorage.setItem("products", JSON.stringify(limitedProducts));

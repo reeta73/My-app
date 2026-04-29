@@ -1,18 +1,24 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
-import { AuthProvider } from "./context/AuthContext";
-import { ProductProvider } from "./context/ProductContext";
-import Header from "./Components/Header"
-import Footer from "./Components/Footer"
+import { AuthProvider } from "./context/AuthProvider";
+import { ProductProvider } from "./context/ProductProvider";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 export default function App() {
   return (
-    <AuthProvider>
-      <ProductProvider>
-        <Header/>
-        <AppRoutes />
-        <footer/>
-      </ProductProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <ProductProvider>
+          <div className="min-h-screen bg-slate-950 flex flex-col">
+            <Header />
+            <main className="flex-grow">
+              <AppRoutes />
+            </main>
+            <Footer />
+          </div>
+        </ProductProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
